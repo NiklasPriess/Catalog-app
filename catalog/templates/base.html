@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Item Catalog Niklas Priess</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0">
+    <link rel="stylesheet" type=text/css href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel=stylesheet type=text/css href="{{url_for('static', filename='css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery-3.2.0.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" defer></script>
+</head>
+
+<body>
+
+    <!-- Content -->
+    <div class="container">
+
+        <!-- Header -->
+        <header class="row nomargin">
+            <div class="col-xs-12 text-center">
+                <h1> Item Catalog </h1>
+            </div>
+        </header>
+
+        <!-- Static Navbar top -->
+        <nav class="navbar navbar-default navbar-static-top center-block">
+            <div class="navbar-header">
+                <ul class="nav nav-pills">
+                    <li role="presentation" class="active"><a href="/">Home</a></li>
+                    <li role="presentation"><a href="/login">Login</a></li>
+                </ul>
+            </div>
+
+            {% if user %}
+            <div class="navbar-header float-right">
+                <ul class="nav nav-pills">
+                    <li role="presentation"><a href="/gdisconnect">Logout</a></li>
+                </ul>
+            </div>
+            {% endif %}
+
+        </nav>
+
+        <!-- Template content -->
+        {% block content %} {% endblock %}
+
+        <!-- Horizontal rule -->
+        <div class="row">
+            <div class="col-xs-12 hr">
+                <hr>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="row">
+            <div class="col-xs-12">
+                <p>
+                    <a href="https://twitter.com" class="fa-twitter-square marginright" aria-hidden="true">Twitter</a>
+                    <a href="https://www.facebook.com" class="fa-facebook-square marginright" aria-hidden="true">Facebook</a>
+                    <a href="https://plus.google.com" class="fa-google-plus-square marginright" aria-hidden="true">Google+</a>
+                </p>
+            </div>
+        </footer>
+
+    </div>
+</body>
+
+</html>

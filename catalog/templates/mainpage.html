@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="row">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+
+<div class="row">
+    <div class="col-xs-5">
+        <div class="shadow">
+        	<h4><a href="/category/new"> Add Category </a></h4>
+            <h2> Categories </h2>
+            {% for i in categories %}
+            <ul>
+            	<li><a href="{{url_for('showCategories')}}" class="black">{{ i.name }}</a> 
+                <span class="float-right marginright">
+                <a href="{{url_for('editCategory', category_id=i.id)}}"> Edit </a> 
+                &#x007C;
+                <a href="{{url_for('deleteCategory', category_id=i.id)}}"> Delete </a>
+                </span>
+                </li>
+            </ul>
+            {% endfor %}
+            <br>
+        </div>
+    </div>
+    <div class="col-xs-7">
+        <div class="shadow">
+        	<h4><a href="/category/items/new"> Add Item </a></h4>
+            <h2> Latest Items </h2>
+            {% for i in latestitems %}
+            <ul>
+            	<li><a href="{{url_for('showCategories')}}" class="black">{{ i.name }}</a>
+                (
+                <a href="{{url_for('showCategories')}}" class="error"> {{i.category.name}} </a>
+                )
+                <span class="float-right marginright">
+                <a href="{{url_for('editItem', item_id=i.id, category_id=i.category_id)}}"> Edit </a>
+                &#x007C;
+                <a href="{{url_for('deleteItem', item_id=i.id, category_id=i.category_id)}}"> Delete </a>
+                </span>
+                </li>
+            </ul>
+            {% endfor %}
+            <br>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
