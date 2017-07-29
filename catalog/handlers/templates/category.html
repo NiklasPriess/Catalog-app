@@ -38,10 +38,10 @@
     <div class="col-xs-7">
         <div class="shadow">
         	<h4><a href="/category/items/new"> Add Item </a></h4>
-            <h2> Latest Items </h2>
-            {% for i in latestitems %}
+            <h2> Items in category {{ category.name }} </h2>
+            {% for i in items %}
             <ul>
-            	<li><a href="{{url_for('showItem', category_id=i.category_id, item_id=i.id)}}" class="black">{{ i.name }}</a>
+            	<li><a href="{{url_for('showItem', category_id=i.category.id, item_id=i.id)}}" class="black">{{ i.name }}</a>
                 (
                 <a href="{{url_for('showCategory', category_id=i.category.id)}}" class="error"> {{i.category.name}} </a>
                 )

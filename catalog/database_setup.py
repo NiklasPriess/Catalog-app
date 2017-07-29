@@ -53,5 +53,5 @@ class Items(Base):
 
 
 engine = create_engine('sqlite:///catalog.db')
-Base.metadata.drop_all(bind=engine)
+# Base.metadata.drop_all(bind=engine)
 Base.metadata.create_all(engine)

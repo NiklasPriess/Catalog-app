@@ -38,25 +38,15 @@
     <div class="col-xs-7">
         <div class="shadow">
         	<h4><a href="/category/items/new"> Add Item </a></h4>
-            <h2> Latest Items </h2>
-            {% for i in latestitems %}
-            <ul>
-            	<li><a href="{{url_for('showItem', category_id=i.category_id, item_id=i.id)}}" class="black">{{ i.name }}</a>
-                (
-                <a href="{{url_for('showCategory', category_id=i.category.id)}}" class="error"> {{i.category.name}} </a>
-                )
-                {% if 'user_id' in session %}
-                {% if session['user_id'] == i.user_id %}
-                <span class="float-right marginright">
-                <a href="{{url_for('editItem', item_id=i.id, category_id=i.category_id)}}"> Edit </a>
-                &#x007C;
-                <a href="{{url_for('deleteItem', item_id=i.id, category_id=i.category_id)}}"> Delete </a>
-                </span>
-                {% endif %}
-                {% endif %}
-                </li>
-            </ul>
-            {% endfor %}
+            <h2><a href="{{url_for('showItem', category_id=item.category_id, item_id=item.id)}}" class="black">{{ item.name }}
+            </a>
+            (
+            <a href="{{url_for('showCategory', category_id=item.category.id)}}" class="error"> {{item.category.name}}
+            </a>
+            )
+            </h2>
+            <h3> Description: </h3>
+            <p> {{ item.description }} </p>
             <br>
         </div>
     </div>
